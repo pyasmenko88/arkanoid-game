@@ -11,9 +11,22 @@ const brickPadding = 5;
 const brickHeight = 20;
 
 function resizeCanvas() {
-    const width = Math.min(Math.max(gameContainer.clientWidth, 360), 768);
+    const containerHeight = window.innerHeight;
+    gameContainer.style.height = containerHeight + 'px';
+
+    let width = Math.min(Math.max(window.innerWidth, 360), 768);
+    let height = width * 4 / 3;
+
+    if (height > containerHeight) {
+        height = containerHeight;
+        width = height * 3 / 4;
+    }
+
     canvas.width = width;
-    canvas.height = width * 4 / 3;
+    canvas.height = height;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    gameContainer.style.width = width + 'px';
 
     if (paddle) {
         paddle.width = canvas.width * 0.2;
@@ -46,7 +59,7 @@ function buildBricks() {
 
 function initGame() {
     paddle = { width: 0, height: 10, x: 0, y: 0 };
-    ball = { x: 0, y: 0, radius: 8, dx: 0, dy: 0, speed: 3, onPaddle: true };
+ball = { x: 0, y: 0, radius: 8, dx: 0, dy: 0, speed: 7.5, onPaddle: true };
 
     resizeCanvas();
 
