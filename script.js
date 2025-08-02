@@ -59,7 +59,7 @@ function buildBricks() {
 
 function initGame() {
     paddle = { width: 0, height: 10, x: 0, y: 0 };
-    ball = { x: 0, y: 0, radius: 8, dx: 0, dy: 0, speed: 7.5, onPaddle: true };
+ball = { x: 0, y: 0, radius: 8, dx: 0, dy: 0, speed: 7.5, onPaddle: true };
 
     resizeCanvas();
 
